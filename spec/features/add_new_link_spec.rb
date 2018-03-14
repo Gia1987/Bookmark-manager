@@ -12,9 +12,17 @@ feature 'Add a new link' do
 
   scenario 'On submition of a link, I expect the link to be added to the homepage' do
     visit('/')
-    click_on('Add Link')
+   click_on('Add Link')
     fill_in('url', :with => 'http://www.featuretest.com')
     click_on('Add Link')
     expect(page).to have_content('http://www.featuretest.com')
+  end
+
+  scenario 'Raise a messagge if the user does not insert a correct URL' do
+    visit('/')
+    click_on('Add Link')
+    fill_in('url', :with => 'invalid link')
+    click_on('Add Link')
+    expect(page).to have_content('Sorry this is not a website')
   end
 end

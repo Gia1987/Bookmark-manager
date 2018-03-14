@@ -1,5 +1,8 @@
+require'./lib/database_connection'
 if ENV['ENVIROMENT'] == 'test'
-  connection = PG.connect(dbname: 'bookmark_manager_test')
+   DatabaseConnection.setup('bookmark_manager_test')
+   # connection = PG.connect(dbname: 'bookmark_manager_test')
 else
-  connection = PG.connect(dbname: 'bookmark_manager')
+   DatabaseConnection.setup('bookmark_manager')
+   # connection = PG.connect(dbname: 'bookmark_manager')
 end
