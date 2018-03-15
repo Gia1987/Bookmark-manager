@@ -17,7 +17,7 @@ class BookmarkManager < Sinatra::Base
     if Link.add(params[:url])
       redirect '/'
     else
-      "Sorry this is not a website"
+      "<a href='/'>This is not a valid website, click here to go back</a>"
     end
   end
 

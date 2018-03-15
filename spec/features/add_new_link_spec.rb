@@ -23,6 +23,6 @@ feature 'Add a new link' do
     click_on('Add Link')
     fill_in('url', :with => 'invalid link')
     click_on('Add Link')
-    expect(page).to have_content('Sorry this is not a website')
+    expect(page).to have_content('This is not a valid website, click here to go back')
   end
 end
