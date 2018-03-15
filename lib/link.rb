@@ -9,10 +9,8 @@ class Link
   end
 
   def self.add(url)
-    # if url =~ /\A#{URI::regexp(['http', 'https'])}\z/
-    result = DatabaseConnection.query("INSERT INTO links(url) VALUES('#{url}')")
-    # else
-      # p 'Sorry this is not a website'
-    # end
+    if url =~ /\A#{URI::regexp(['http', 'https'])}\z/
+      DatabaseConnection.query("INSERT INTO links(url) VALUES('#{url}')")
+    end
   end
 end

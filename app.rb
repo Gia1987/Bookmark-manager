@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require_relative './lib/link'
 require_relative'./database_connection_setup'
+require 'uri'
 
 class BookmarkManager < Sinatra::Base
   get '/' do
@@ -13,8 +14,11 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/add-link' do
-    Link.add(params[:url])
-    redirect '/'
+    if Link.add(params[:url])
+      redirect '/'
+    else
+      "Sorry this is not a website"
+    end
   end
 
   run! if app_file == $0
