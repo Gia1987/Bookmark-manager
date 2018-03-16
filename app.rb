@@ -14,10 +14,10 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/add-link' do
-    if Link.add(params[:url])
+    if Link.add(params[:url], params[:title])
       redirect '/'
     else
-      "<a href='/'>This is not a valid website, click here to go back</a>"
+      "<a href='/input-link'>This is not a valid website, click here to go back</a>"
     end
   end
 

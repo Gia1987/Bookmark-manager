@@ -14,10 +14,12 @@ describe Link do
 
   describe '.add' do
     it 'add new link' do
-      Link.add('http://www.test.com')
+      Link.add('http://www.test.com', 'test')
       links = Link.all
+      title = links.map(&:title)
       urls = links.map(&:url)
       expect(urls).to include('http://www.test.com')
+      expect(title).to include('test')
     end
   end
 end
